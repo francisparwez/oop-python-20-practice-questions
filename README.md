@@ -17,7 +17,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | --- | ----------------- | ------------------------------------------------- | -------------- |
 | 1   | Person Class      | `__init__`, instance attributes, instance methods | ✅ Completed   |
 | 2   | Student Class     | `__init__`, instance attributes, methods          | ✅ Completed   |
-| 3   | Rectangle Class   | Methods, calculations, instance attributes        | ⬜ Not Started |
+| 3   | Rectangle Class   | Methods, calculations, instance attributes        | ✅ Completed   |
 | 4   | Bank Account      | Methods, validation, state management             | ⬜ Not Started |
 | 5   | Car Class         | Instance attributes, methods                      | ⬜ Not Started |
 | 6   | Circle Class      | Methods, calculations                             | ⬜ Not Started |
@@ -159,7 +159,9 @@ Grade: F
 
 ---
 
-## 3. Rectangle Class
+## 3. Rectangle Class ✅
+
+### Problem
 
 Create a `Rectangle` class with:
 
@@ -171,14 +173,54 @@ Create methods:
 - `area()`
 - `perimeter()`
 
-Example:
+### Concepts Practiced
 
-```text
-Area: 50
-Perimeter: 30
+- Creating a class
+- `__init__()`
+- Instance attributes
+- `self`
+- Instance methods
+- Returning calculated values
+- `if __name__ == "__main__":`
+
+### Solution
+
+```python
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+
+if __name__ == "__main__":
+    rectangle = Rectangle(10, 5)
+    print(rectangle.area())
+    print(rectangle.perimeter())
 ```
 
-**Status:** ⬜ Not Started
+### Output
+
+```text
+50
+30
+```
+
+### What I Learned
+
+- A class can store multiple related attributes such as `length` and `width`.
+- Instance methods can perform calculations using the object's attributes.
+- `return` sends the calculated result back to the caller.
+- The area of a rectangle is calculated using `length × width`.
+- The perimeter is calculated using `2 × (length + width)`.
+- An object can be created with specific values and its methods can then be called to perform calculations.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -817,11 +859,11 @@ Real-world OOP System
 
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
-| 🟢 Easy         |         2 |     10 |
+| 🟢 Easy         |         3 |     10 |
 | 🟡 Intermediate |         0 |     10 |
-| **Overall**     |     **2** | **20** |
+| **Overall**     |     **3** | **20** |
 
-**Overall Progress: 10%**
+**Overall Progress: 15%**
 
 ---
 
