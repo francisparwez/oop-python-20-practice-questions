@@ -16,7 +16,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | #   | Problem           | Main Concepts                                     | Status         |
 | --- | ----------------- | ------------------------------------------------- | -------------- |
 | 1   | Person Class      | `__init__`, instance attributes, instance methods | ✅ Completed   |
-| 2   | Student Class     | `__init__`, instance attributes, methods          | ⬜ Not Started |
+| 2   | Student Class     | `__init__`, instance attributes, methods          | ✅ Completed   |
 | 3   | Rectangle Class   | Methods, calculations, instance attributes        | ⬜ Not Started |
 | 4   | Bank Account      | Methods, validation, state management             | ⬜ Not Started |
 | 5   | Car Class         | Instance attributes, methods                      | ⬜ Not Started |
@@ -101,7 +101,9 @@ My name is Francis and I am 31 years old
 
 ---
 
-## 2. Student Class
+## 2. Student Class ✅
+
+### Problem
 
 Create a `Student` class with:
 
@@ -111,9 +113,49 @@ Create a `Student` class with:
 
 Add a method `display_info()` that displays all three attributes.
 
-**Concepts:** `__init__`, instance attributes, methods.
+### Concepts Practiced
 
-**Status:** ⬜ Not Started
+- Creating a class
+- `__init__()`
+- Instance attributes
+- `self`
+- Instance methods
+- `if __name__ == "__main__":`
+
+### Solution
+
+```python
+class Student:
+
+    def __init__(self, name, student_id, grade):
+        self.name = name
+        self.student_id = student_id
+        self.grade = grade
+
+    def display_info(self):
+        print(f"Student Name: {self.name}\nStudent ID: {self.student_id}\nGrade: {self.grade}")
+
+
+if __name__ == "__main__":
+    student1 = Student('Francis', '38332', 'F')
+    student1.display_info()
+```
+
+### Output
+
+```text
+Student Name: Francis
+Student ID: 38332
+Grade: F
+```
+
+### What I Learned
+
+- A class can contain multiple instance attributes.
+- `self` is used to access attributes belonging to the current object.
+- `display_info()` can access and display object data through `self`.
+- Objects are created by calling the class with the required arguments.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
 
 ---
 
@@ -775,11 +817,11 @@ Real-world OOP System
 
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
-| 🟢 Easy         |         1 |     10 |
+| 🟢 Easy         |         2 |     10 |
 | 🟡 Intermediate |         0 |     10 |
-| **Overall**     |     **1** | **20** |
+| **Overall**     |     **2** | **20** |
 
-**Overall Progress: 5%**
+**Overall Progress: 10%**
 
 ---
 
