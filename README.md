@@ -18,7 +18,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | 1   | Person Class      | `__init__`, instance attributes, instance methods | ✅ Completed   |
 | 2   | Student Class     | `__init__`, instance attributes, methods          | ✅ Completed   |
 | 3   | Rectangle Class   | Methods, calculations, instance attributes        | ✅ Completed   |
-| 4   | Bank Account      | Methods, validation, state management             | ⬜ Not Started |
+| 4   | Bank Account      | Methods, validation, state management             | ✅ Completed   |
 | 5   | Car Class         | Instance attributes, methods                      | ⬜ Not Started |
 | 6   | Circle Class      | Methods, calculations                             | ⬜ Not Started |
 | 7   | Employee Class    | Methods, modifying object state                   | ⬜ Not Started |
@@ -224,7 +224,9 @@ if __name__ == "__main__":
 
 ---
 
-## 4. Bank Account
+## 4. Bank Account ✅
+
+### Problem
 
 Create a `BankAccount` class with:
 
@@ -239,7 +241,73 @@ Create methods:
 
 Prevent the user from withdrawing more money than the current balance.
 
-**Status:** ⬜ Not Started
+### Concepts Practiced
+
+- Creating a class
+- `__init__()`
+- Instance attributes
+- `self`
+- Instance methods
+- Modifying object state
+- Conditional logic and validation
+- Returning values from methods
+- `if __name__ == "__main__":`
+
+### Solution
+
+```python
+class BankAccount:
+
+    def __init__(self, account_holder, balance):
+        self.account_holder = account_holder
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        return f"PKR {amount} has been deposited to your account"
+
+    def withdraw(self, amount):
+        if self.balance < amount:
+            return "Insufficient Balance. Please try another amount."
+        else:
+            self.balance -= amount
+            return f"PKR {amount} has been withdrawn from your account."
+
+    def display_balance(self):
+        return f"You have PKR {self.balance} in your account {self.account_holder}"
+
+
+if __name__ == "__main__":
+    bank_account1 = BankAccount("Francis Parwez", 20000)
+    print(bank_account1.display_balance())
+    print(bank_account1.deposit(2000))
+    print(bank_account1.withdraw(1500))
+    print(bank_account1.withdraw(111500))
+    print(bank_account1.display_balance())
+```
+
+### Output
+
+```text
+You have PKR 20000 in your account Francis Parwez
+PKR 2000 has been deposited to your account
+PKR 1500 has been withdrawn from your account.
+Insufficient Balance. Please try another amount.
+You have PKR 20500 in your account Francis Parwez
+```
+
+### What I Learned
+
+- A class can store account information using instance attributes.
+- Methods can modify the object's state, such as increasing or decreasing the balance.
+- `deposit()` increases the account balance.
+- `withdraw()` checks the current balance before allowing a withdrawal.
+- Conditional logic can be used to prevent invalid operations.
+- `return` allows methods to send messages back to the caller.
+- The balance remains unchanged when a withdrawal is greater than the available balance.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -859,11 +927,11 @@ Real-world OOP System
 
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
-| 🟢 Easy         |         3 |     10 |
+| 🟢 Easy         |         4 |     10 |
 | 🟡 Intermediate |         0 |     10 |
-| **Overall**     |     **3** | **20** |
+| **Overall**     |     **4** | **20** |
 
-**Overall Progress: 15%**
+**Overall Progress: 20%**
 
 ---
 
