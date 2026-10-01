@@ -19,7 +19,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | 2   | Student Class     | `__init__`, instance attributes, methods          | ✅ Completed   |
 | 3   | Rectangle Class   | Methods, calculations, instance attributes        | ✅ Completed   |
 | 4   | Bank Account      | Methods, validation, state management             | ✅ Completed   |
-| 5   | Car Class         | Instance attributes, methods                      | ⬜ Not Started |
+| 5   | Car Class         | Instance attributes, methods                      | ✅ Completed   |
 | 6   | Circle Class      | Methods, calculations                             | ⬜ Not Started |
 | 7   | Employee Class    | Methods, modifying object state                   | ⬜ Not Started |
 | 8   | Book Class        | Methods, percentage calculations                  | ⬜ Not Started |
@@ -311,7 +311,9 @@ You have PKR 20500 in your account Francis Parwez
 
 ---
 
-## 5. Car Class
+## 5. Car Class ✅
+
+### Problem
 
 Create a `Car` class with:
 
@@ -325,13 +327,56 @@ Create a method:
 display_info()
 ```
 
-Example output:
+that displays the car information in the format:
 
 ```text
 Toyota Corolla (2022)
 ```
 
-**Status:** ⬜ Not Started
+### Concepts Practiced
+
+- Creating a class
+- `__init__()`
+- Instance attributes
+- `self`
+- Instance methods
+- Returning formatted strings
+- `if __name__ == "__main__":`
+
+### Solution
+
+```python
+class Car:
+
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+
+    def display_info(self):
+        return f"{self.brand} {self.model} ({self.year})"
+
+if __name__ == "__main__":
+    car1 = Car("Toyota", "Corolla", 2022)
+    print(car1.display_info())
+```
+
+### Output
+
+```text
+Toyota Corolla (2022)
+```
+
+### What I Learned
+
+- A class can store related information such as a car's brand, model, and year.
+- `__init__()` initializes the attributes when a `Car` object is created.
+- `self` is used to access attributes belonging to the current object.
+- `display_info()` can combine multiple attributes into one formatted string.
+- `return` sends the formatted result back to the caller, where it can be printed.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -927,11 +972,11 @@ Real-world OOP System
 
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
-| 🟢 Easy         |         4 |     10 |
+| 🟢 Easy         |         5 |     10 |
 | 🟡 Intermediate |         0 |     10 |
-| **Overall**     |     **4** | **20** |
+| **Overall**     |     **5** | **20** |
 
-**Overall Progress: 20%**
+**Overall Progress: 25%**
 
 ---
 
