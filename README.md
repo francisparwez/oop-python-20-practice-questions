@@ -20,7 +20,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | 3   | Rectangle Class   | Methods, calculations, instance attributes        | ✅ Completed   |
 | 4   | Bank Account      | Methods, validation, state management             | ✅ Completed   |
 | 5   | Car Class         | Instance attributes, methods                      | ✅ Completed   |
-| 6   | Circle Class      | Methods, calculations                             | ⬜ Not Started |
+| 6   | Circle Class      | Methods, calculations                             | ✅ Completed   |
 | 7   | Employee Class    | Methods, modifying object state                   | ⬜ Not Started |
 | 8   | Book Class        | Methods, percentage calculations                  | ⬜ Not Started |
 | 9   | Counter Class     | Instance state, increment/decrement/reset         | ⬜ Not Started |
@@ -380,7 +380,9 @@ Toyota Corolla (2022)
 
 ---
 
-## 6. Circle Class
+## 6. Circle Class ✅
+
+### Problem
 
 Create a `Circle` class with:
 
@@ -397,7 +399,60 @@ Use:
 π = 3.14159
 ```
 
-**Status:** ⬜ Not Started
+### Concepts Practiced
+
+- Creating a class
+- `__init__()`
+- Instance attributes
+- Class attributes
+- `self`
+- Instance methods
+- Mathematical calculations
+- Returning calculated values
+- `if __name__ == "__main__":`
+
+### Solution
+
+```python
+class Circle:
+
+    pi = 3.14159
+
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return Circle.pi * (self.radius ** 2)
+
+    def circumference(self):
+        return 2 * Circle.pi * self.radius
+
+
+if __name__ == "__main__":
+    circle1 = Circle(20)
+
+    print(circle1.area())
+    print(circle1.circumference())
+```
+
+### Output
+
+```text
+1256.636
+125.6636
+```
+
+### What I Learned
+
+- A class can contain a class attribute such as `pi` that is shared by instances.
+- `self.radius` stores the radius for each individual `Circle` object.
+- `area()` calculates the area using the circle's radius.
+- `circumference()` calculates the circumference using the circle's radius.
+- `Circle.pi` explicitly accesses the class attribute.
+- `return` sends the calculated result back to the caller.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -972,11 +1027,11 @@ Real-world OOP System
 
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
-| 🟢 Easy         |         5 |     10 |
+| 🟢 Easy         |         6 |     10 |
 | 🟡 Intermediate |         0 |     10 |
-| **Overall**     |     **5** | **20** |
+| **Overall**     |     **6** | **20** |
 
-**Overall Progress: 25%**
+**Overall Progress: 30%**
 
 ---
 
