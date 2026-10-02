@@ -22,7 +22,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | 5   | Car Class         | Instance attributes, methods                      | ✅ Completed   |
 | 6   | Circle Class      | Methods, calculations                             | ✅ Completed   |
 | 7   | Employee Class    | Methods, modifying object state                   | ✅ Completed   |
-| 8   | Book Class        | Methods, percentage calculations                  | ⬜ Not Started |
+| 8   | Book Class        | Methods, percentage calculations                  | ✅ Completed   |
 | 9   | Counter Class     | Instance state, increment/decrement/reset         | ⬜ Not Started |
 | 10  | Temperature Class | Methods, unit conversion                          | ⬜ Not Started |
 
@@ -535,7 +535,9 @@ Salary after: 60000
 
 ---
 
-## 8. Book Class
+## 8. Book Class ✅
+
+### Problem
 
 Create a `Book` class with:
 
@@ -559,7 +561,59 @@ Discount: 20%
 New price: 800
 ```
 
-**Status:** ⬜ Not Started
+### Concepts Practiced
+
+- Creating a class
+- `__init__()`
+- Instance attributes
+- `self`
+- Instance methods
+- Modifying object state
+- Percentage calculations
+- `__str__()`
+- `if __name__ == "__main__":`
+
+### Solution
+
+```python
+class Book:
+
+    def __init__(self, title, author, price):
+        self.title = title
+        self.author = author
+        self.price = price
+
+    def apply_discount(self, percent):
+        self.price = self.price - (self.price * (percent / 100))
+
+    def __str__(self):
+        return f"{self.title} by {self.author} priced ${self.price:.2f}"
+
+if __name__ == "__main__":
+    book1 = Book("Harry Potter", "JK Rowling", 29.99)
+    print(book1)
+    book1.apply_discount(20)
+    print(book1)
+```
+
+### Output
+
+```text
+Harry Potter by JK Rowling priced $29.99
+Harry Potter by JK Rowling priced $23.99
+```
+
+### What I Learned
+
+- A class can store related book information using instance attributes.
+- `apply_discount()` modifies the object's `price` attribute.
+- A percentage discount is calculated from the original price.
+- `self.price` stores the updated price after the discount.
+- `__str__()` provides a readable string representation of the `Book` object.
+- `:.2f` formats the price to two decimal places.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -1080,11 +1134,11 @@ Real-world OOP System
 
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
-| 🟢 Easy         |         7 |     10 |
+| 🟢 Easy         |         8 |     10 |
 | 🟡 Intermediate |         0 |     10 |
-| **Overall**     |     **7** | **20** |
+| **Overall**     |     **8** | **20** |
 
-**Overall Progress: 35%**
+**Overall Progress: 40%**
 
 ---
 
