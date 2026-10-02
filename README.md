@@ -21,7 +21,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | 4   | Bank Account      | Methods, validation, state management             | ✅ Completed   |
 | 5   | Car Class         | Instance attributes, methods                      | ✅ Completed   |
 | 6   | Circle Class      | Methods, calculations                             | ✅ Completed   |
-| 7   | Employee Class    | Methods, modifying object state                   | ⬜ Not Started |
+| 7   | Employee Class    | Methods, modifying object state                   | ✅ Completed   |
 | 8   | Book Class        | Methods, percentage calculations                  | ⬜ Not Started |
 | 9   | Counter Class     | Instance state, increment/decrement/reset         | ⬜ Not Started |
 | 10  | Temperature Class | Methods, unit conversion                          | ⬜ Not Started |
@@ -456,7 +456,9 @@ if __name__ == "__main__":
 
 ---
 
-## 7. Employee Class
+## 7. Employee Class ✅
+
+### Problem
 
 Create an `Employee` class with:
 
@@ -478,7 +480,58 @@ Salary before: 50000
 Salary after: 60000
 ```
 
-**Status:** ⬜ Not Started
+### Concepts Practiced
+
+- Creating a class
+- `__init__()`
+- Instance attributes
+- `self`
+- Instance methods
+- Modifying object state
+- Conditional logic and validation
+- `if __name__ == "__main__":`
+
+### Solution
+
+```python
+class Employee:
+
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+    def give_raise(self, amount):
+        if amount > 0:
+            self.salary += amount
+        else:
+            print("Invalid Amount. Enter a non-zero/non-negative number")
+
+
+if __name__ == "__main__":
+    employee1 = Employee("Francis", 50000)
+
+    print(f"Salary before: {employee1.salary}")
+    employee1.give_raise(10000)
+    print(f"Salary after: {employee1.salary}")
+```
+
+### Output
+
+```text
+Salary before: 50000
+Salary after: 60000
+```
+
+### What I Learned
+
+- An object can store employee information using instance attributes.
+- Methods can modify an object's state by changing its attributes.
+- `give_raise()` increases the employee's salary by the given amount.
+- Conditional logic can be used to reject invalid raise amounts.
+- `self.salary += amount` updates the existing salary stored in the object.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -1027,11 +1080,11 @@ Real-world OOP System
 
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
-| 🟢 Easy         |         6 |     10 |
+| 🟢 Easy         |         7 |     10 |
 | 🟡 Intermediate |         0 |     10 |
-| **Overall**     |     **6** | **20** |
+| **Overall**     |     **7** | **20** |
 
-**Overall Progress: 30%**
+**Overall Progress: 35%**
 
 ---
 
