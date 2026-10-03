@@ -23,7 +23,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | 6   | Circle Class      | Methods, calculations                             | ✅ Completed   |
 | 7   | Employee Class    | Methods, modifying object state                   | ✅ Completed   |
 | 8   | Book Class        | Methods, percentage calculations                  | ✅ Completed   |
-| 9   | Counter Class     | Instance state, increment/decrement/reset         | ⬜ Not Started |
+| 9   | Counter Class     | Instance state, increment/decrement/reset         | ✅ Completed   |
 | 10  | Temperature Class | Methods, unit conversion                          | ⬜ Not Started |
 
 ### 🟡 Intermediate Level
@@ -617,7 +617,9 @@ Harry Potter by JK Rowling priced $23.99
 
 ---
 
-## 9. Counter Class
+## 9. Counter Class ✅
+
+### Problem
 
 Create a `Counter` class with:
 
@@ -638,7 +640,81 @@ Example:
 0 → 1 → 2 → 1 → 0
 ```
 
-**Status:** ⬜ Not Started
+### Concepts Practiced
+
+- Creating a class
+- `__init__()`
+- Instance attributes
+- `self`
+- Instance methods
+- Modifying object state
+- Conditional logic and validation
+- Edge-case handling
+- `if __name__ == "__main__":`
+
+### Solution
+
+```python
+class Counter:
+
+    def __init__(self):
+        self.count = 0
+
+    def increment(self):
+        self.count += 1
+
+    def decrement(self):
+        if self.count == 0:
+            print("The minimum limit of 0 has already been reached.")
+        else:
+            self.count -= 1
+
+    def reset(self):
+        self.count = 0
+
+    def display(self):
+        print(self.count)
+
+
+if __name__ == '__main__':
+    counter = Counter()
+    counter.increment()
+    counter.display()
+    counter.increment()
+    counter.display()
+    counter.decrement()
+    counter.display()
+    counter.reset()
+    counter.display()
+    counter.decrement()
+    counter.display()
+    counter.increment()
+    counter.display()
+```
+
+### Output
+
+```text
+1
+2
+1
+0
+The minimum limit of 0 has already been reached.
+1
+```
+
+### What I Learned
+
+- `self.count` stores the current state of the `Counter` object.
+- `increment()` modifies the object's state by increasing `count` by `1`.
+- `decrement()` modifies the object's state by decreasing `count` by `1`.
+- Conditional logic can prevent the counter from going below `0`.
+- `reset()` restores the counter to its initial state.
+- Methods can be used to control how an object's state changes.
+- Testing an edge case such as decrementing at `0` helps verify that validation works correctly.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -1134,11 +1210,11 @@ Real-world OOP System
 
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
-| 🟢 Easy         |         8 |     10 |
+| 🟢 Easy         |         9 |     10 |
 | 🟡 Intermediate |         0 |     10 |
-| **Overall**     |     **8** | **20** |
+| **Overall**     |     **9** | **20** |
 
-**Overall Progress: 40%**
+**Overall Progress: 45%**
 
 ---
 
