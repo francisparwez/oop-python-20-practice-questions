@@ -13,18 +13,18 @@ The exercises progress from basic classes and instance methods to inheritance, e
 
 ### 🟢 Easy Level
 
-| #   | Problem           | Main Concepts                                     | Status         |
-| --- | ----------------- | ------------------------------------------------- | -------------- |
-| 1   | Person Class      | `__init__`, instance attributes, instance methods | ✅ Completed   |
-| 2   | Student Class     | `__init__`, instance attributes, methods          | ✅ Completed   |
-| 3   | Rectangle Class   | Methods, calculations, instance attributes        | ✅ Completed   |
-| 4   | Bank Account      | Methods, validation, state management             | ✅ Completed   |
-| 5   | Car Class         | Instance attributes, methods                      | ✅ Completed   |
-| 6   | Circle Class      | Methods, calculations                             | ✅ Completed   |
-| 7   | Employee Class    | Methods, modifying object state                   | ✅ Completed   |
-| 8   | Book Class        | Methods, percentage calculations                  | ✅ Completed   |
-| 9   | Counter Class     | Instance state, increment/decrement/reset         | ✅ Completed   |
-| 10  | Temperature Class | Methods, unit conversion                          | ⬜ Not Started |
+| #   | Problem           | Main Concepts                                     | Status       |
+| --- | ----------------- | ------------------------------------------------- | ------------ |
+| 1   | Person Class      | `__init__`, instance attributes, instance methods | ✅ Completed |
+| 2   | Student Class     | `__init__`, instance attributes, methods          | ✅ Completed |
+| 3   | Rectangle Class   | Methods, calculations, instance attributes        | ✅ Completed |
+| 4   | Bank Account      | Methods, validation, state management             | ✅ Completed |
+| 5   | Car Class         | Instance attributes, methods                      | ✅ Completed |
+| 6   | Circle Class      | Methods, calculations                             | ✅ Completed |
+| 7   | Employee Class    | Methods, modifying object state                   | ✅ Completed |
+| 8   | Book Class        | Methods, percentage calculations                  | ✅ Completed |
+| 9   | Counter Class     | Instance state, increment/decrement/reset         | ✅ Completed |
+| 10  | Temperature Class | Methods, unit conversion                          | ✅ Completed |
 
 ### 🟡 Intermediate Level
 
@@ -718,7 +718,9 @@ The minimum limit of 0 has already been reached.
 
 ---
 
-## 10. Temperature Class
+## 10. Temperature Class ✅
+
+### Problem
 
 Create a `Temperature` class with:
 
@@ -731,7 +733,58 @@ Create methods:
 
 Use the appropriate conversion formulas.
 
-**Status:** ⬜ Not Started
+### Concepts Practiced
+
+- Creating a class
+- `__init__()`
+- Instance attributes
+- `self`
+- Instance methods
+- Temperature unit conversion
+- Mathematical calculations
+- Returning calculated values
+- Rounding numerical results
+- `if __name__ == "__main__":`
+
+### Solution
+
+```python
+class Temperature:
+
+    def __init__(self, celsius):
+        self.celsius = celsius
+
+    def to_fahrenheit(self):
+        return round(((self.celsius * 1.8) + 32), 2)
+
+    def to_kelvin(self):
+        return round((self.celsius + 273.15), 2)
+
+if __name__ == "__main__":
+    celsius = 29
+    temperature = Temperature(celsius)
+    print(f"C: {celsius}\tF: {temperature.to_fahrenheit()}")
+    print(f"C: {celsius}\tK: {temperature.to_kelvin()}")
+```
+
+### Output
+
+```text
+C: 29	F: 84.2
+C: 29	K: 302.15
+```
+
+### What I Learned
+
+- A class can store a temperature value using an instance attribute.
+- `to_fahrenheit()` converts Celsius to Fahrenheit using the appropriate conversion formula.
+- `to_kelvin()` converts Celsius to Kelvin using the appropriate conversion formula.
+- Instance methods can perform calculations using `self.celsius`.
+- `round(..., 2)` can be used to round conversion results to two decimal places.
+- `return` sends the calculated result back to the caller.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -1210,11 +1263,11 @@ Real-world OOP System
 
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
-| 🟢 Easy         |         9 |     10 |
+| 🟢 Easy         |        10 |     10 |
 | 🟡 Intermediate |         0 |     10 |
-| **Overall**     |     **9** | **20** |
+| **Overall**     |    **10** | **20** |
 
-**Overall Progress: 45%**
+**Overall Progress: 50%**
 
 ---
 
