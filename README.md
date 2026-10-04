@@ -31,7 +31,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | #   | Problem                    | Main Concepts                                             | Status         |
 | --- | -------------------------- | --------------------------------------------------------- | -------------- |
 | 11  | Employee Inheritance       | Inheritance, method overriding                            | ✅ Completed   |
-| 12  | Animal Polymorphism        | Inheritance, polymorphism, method overriding              | ⬜ Not Started |
+| 12  | Animal Polymorphism        | Inheritance, polymorphism, method overriding              | ✅ Completed   |
 | 13  | Private Bank Account       | Encapsulation, private attributes                         | ⬜ Not Started |
 | 14  | Shopping Cart              | Multiple classes, lists of objects, object interaction    | ⬜ Not Started |
 | 15  | Library Management System  | Multiple classes, object state, object interaction        | ⬜ Not Started |
@@ -889,41 +889,72 @@ Faizan Receives The Salary Of 38500.00 Each Month After 10% Bonus
 
 ---
 
-## 12. Animal Polymorphism
+## 12. Animal Polymorphism ✅
 
-Create a base class:
+### Problem
+
+Create a base `Animal` class with a `speak()` method. Create `Dog`, `Cat`, and `Cow` child classes, each overriding `speak()`. Then create a list containing different animals and call `speak()` using a loop to demonstrate polymorphism.
+
+### Concepts Practiced
+
+- Inheritance
+- Polymorphism
+- Method overriding
+- Base and child classes
+- Lists of objects
+- Looping through objects
+- `self`
+- `if __name__ == "__main__":`
+
+### Solution
 
 ```python
-Animal
+class Animal:
+    def speak(self):
+        return "Make Sound"
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow"
+
+class Cow(Animal):
+    def speak(self):
+        return "Moo"
+
+if __name__ == "__main__":
+    dog = Dog()
+    cat = Cat()
+    cow = Cow()
+
+    animals = [dog, cat, cow]
+
+    for animal in animals:
+        print(animal.speak())
 ```
 
-with:
-
-```python
-speak()
-```
-
-Create:
-
-- `Dog`
-- `Cat`
-- `Cow`
-
-Each class should override `speak()`.
-
-Expected:
+### Output
 
 ```text
-Dog: Woof
-Cat: Meow
-Cow: Moo
+Woof
+Meow
+Moo
 ```
 
-Then create a list containing different animals and call `speak()` using a loop.
+### What I Learned
 
-**Concept:** polymorphism.
+- Child classes can inherit from a common parent class.
+- `Dog`, `Cat`, and `Cow` each override the `speak()` method.
+- Polymorphism allows the same `speak()` method call to produce different behavior depending on the object.
+- A list can contain objects from different child classes that share the same parent class.
+- A loop can call the same method on each object without needing to know its specific class.
+- Method overriding allows each animal to provide its own implementation of `speak()`.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
 
-**Status:** ⬜ Not Started
+**Status:** ✅ Completed
 
 ---
 
@@ -1326,10 +1357,10 @@ Real-world OOP System
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
 | 🟢 Easy         |        10 |     10 |
-| 🟡 Intermediate |         1 |     10 |
-| **Overall**     |    **11** | **20** |
+| 🟡 Intermediate |         2 |     10 |
+| **Overall**     |    **12** | **20** |
 
-**Overall Progress: 55%**
+**Overall Progress: 60%**
 
 ---
 
