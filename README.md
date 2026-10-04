@@ -30,7 +30,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 
 | #   | Problem                    | Main Concepts                                             | Status         |
 | --- | -------------------------- | --------------------------------------------------------- | -------------- |
-| 11  | Employee Inheritance       | Inheritance, method overriding                            | ⬜ Not Started |
+| 11  | Employee Inheritance       | Inheritance, method overriding                            | ✅ Completed   |
 | 12  | Animal Polymorphism        | Inheritance, polymorphism, method overriding              | ⬜ Not Started |
 | 13  | Private Bank Account       | Encapsulation, private attributes                         | ⬜ Not Started |
 | 14  | Shopping Cart              | Multiple classes, lists of objects, object interaction    | ⬜ Not Started |
@@ -827,6 +827,68 @@ Rules:
 
 ---
 
+## 11. Employee Inheritance ✅
+
+### Problem
+
+Create a base `Employee` class with `name` and `salary`. Create two child classes, `Manager` and `Developer`, and add `calculate_bonus()`. Managers receive a 20% bonus and Developers receive a 10% bonus.
+
+### Concepts Practiced
+
+- Inheritance
+- Base and child classes
+- Method overriding
+- Instance attributes
+- `self`
+- Percentage calculations
+- `if __name__ == "__main__":`
+
+### Solution
+
+```python
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+
+class Manager(Employee):
+    def calculate_bonus(self):
+        return self.salary + (self.salary * 0.2)
+
+class Developer(Employee):
+    def calculate_bonus(self):
+        return self.salary + (self.salary * 0.1)
+
+if __name__ == '__main__':
+    manager = Manager("Alice", 75000)
+    developer = Developer("Faizan", 35000)
+
+    print(f"{manager.name} Receives The Salary Of {manager.calculate_bonus():.2f} Each Month After 20% Bonus")
+    print(f"{developer.name} Receives The Salary Of {developer.calculate_bonus():.2f} Each Month After 10% Bonus")
+```
+
+### Output
+
+```text
+Alice Receives The Salary Of 90000.00 Each Month After 20% Bonus
+Faizan Receives The Salary Of 38500.00 Each Month After 10% Bonus
+```
+
+### What I Learned
+
+- A child class can inherit attributes and behavior from a parent class.
+- `Manager` and `Developer` inherit `name` and `salary` from `Employee`.
+- Each child class can provide its own implementation of the same method.
+- Method overriding allows `Manager` and `Developer` to calculate different bonus percentages.
+- The Manager calculation adds 20% of the salary to the original salary.
+- The Developer calculation adds 10% of the salary to the original salary.
+- Inheritance reduces the need to duplicate common attributes such as `name` and `salary`.
+
+**Status:** ✅ Completed
+
+---
+
 ## 12. Animal Polymorphism
 
 Create a base class:
@@ -1264,10 +1326,10 @@ Real-world OOP System
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
 | 🟢 Easy         |        10 |     10 |
-| 🟡 Intermediate |         0 |     10 |
-| **Overall**     |    **10** | **20** |
+| 🟡 Intermediate |         1 |     10 |
+| **Overall**     |    **11** | **20** |
 
-**Overall Progress: 50%**
+**Overall Progress: 55%**
 
 ---
 
