@@ -32,7 +32,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | --- | -------------------------- | --------------------------------------------------------- | -------------- |
 | 11  | Employee Inheritance       | Inheritance, method overriding                            | ✅ Completed   |
 | 12  | Animal Polymorphism        | Inheritance, polymorphism, method overriding              | ✅ Completed   |
-| 13  | Private Bank Account       | Encapsulation, private attributes                         | ⬜ Not Started |
+| 13  | Private Bank Account       | Encapsulation, private attributes                         | ✅ Completed   |
 | 14  | Shopping Cart              | Multiple classes, lists of objects, object interaction    | ⬜ Not Started |
 | 15  | Library Management System  | Multiple classes, object state, object interaction        | ⬜ Not Started |
 | 16  | Employee Count             | Class variables, `@classmethod`                           | ⬜ Not Started |
@@ -960,25 +960,74 @@ Moo
 
 ## 13. Private Bank Account
 
-Improve the `BankAccount` class.
+Improve the `BankAccount` class by making the balance private using `__balance`. Create `deposit()`, `withdraw()`, and `get_balance()` methods so the balance is accessed through the class interface rather than directly.
 
-Make the balance private:
+### Concepts Practiced
+
+- Encapsulation
+- Private attributes
+- `__balance`
+- Getter method
+- Instance methods
+- Modifying object state
+- Conditional logic and validation
+- `if __name__ == "__main__":`
+
+### Solution
 
 ```python
-__balance
+class BankAccount:
+
+    def __init__(self, account_holder, balance):
+        self.account_holder = account_holder
+        self.__balance = balance
+
+    def deposit(self, amount):
+        self.__balance += amount
+        return f"PKR {amount} has been deposited to your account"
+
+    def withdraw(self, amount):
+        if self.__balance < amount:
+            return "Insufficient Balance. Please try another amount."
+        else:
+            self.__balance -= amount
+            return f"PKR {amount} has been withdrawn from your account."
+
+    def get_balance(self):
+        return self.__balance
+
+
+if __name__ == "__main__":
+    bank_account1 = BankAccount("Francis Parwez", 20000)
+
+    print(f"Initial Balance: PKR {bank_account1.get_balance()}")
+    print(bank_account1.deposit(2000))
+    print(bank_account1.withdraw(1500))
+    print(bank_account1.withdraw(111500))
+    print(f"Final Balance: PKR {bank_account1.get_balance()}")
 ```
 
-Create:
+### Output
 
-- `deposit()`
-- `withdraw()`
-- `get_balance()`
+```text
+Initial Balance: PKR 20000
+PKR 2000 has been deposited to your account
+PKR 1500 has been withdrawn from your account.
+Insufficient Balance. Please try another amount.
+Final Balance: PKR 20500
+```
 
-The user should not be able to directly modify the balance through the normal public interface.
+### What I Learned
 
-**Concepts:** encapsulation and private attributes.
+- Prefixing an attribute with `__` makes it a private attribute through Python's name-mangling mechanism.
+- `__balance` should be accessed through methods rather than directly through the normal public interface.
+- `get_balance()` provides controlled read access to the private balance.
+- `deposit()` and `withdraw()` control how the account balance is modified.
+- Encapsulation helps keep an object's internal state controlled by its methods.
+- `withdraw()` prevents the balance from becoming negative when the requested amount exceeds the available balance.
+- `if __name__ == "__main__":` keeps the test code from running when the file is imported.
 
-**Status:** ⬜ Not Started
+**Status:** ✅ Completed
 
 ---
 
@@ -1357,10 +1406,10 @@ Real-world OOP System
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
 | 🟢 Easy         |        10 |     10 |
-| 🟡 Intermediate |         2 |     10 |
-| **Overall**     |    **12** | **20** |
+| 🟡 Intermediate |         3 |     10 |
+| **Overall**     |    **13** | **20** |
 
-**Overall Progress: 60%**
+**Overall Progress: 65%**
 
 ---
 
