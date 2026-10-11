@@ -33,7 +33,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | 11  | Employee Inheritance       | Inheritance, method overriding                            | ✅ Completed   |
 | 12  | Animal Polymorphism        | Inheritance, polymorphism, method overriding              | ✅ Completed   |
 | 13  | Private Bank Account       | Encapsulation, private attributes                         | ✅ Completed   |
-| 14  | Shopping Cart              | Multiple classes, lists of objects, object interaction    | ⬜ Not Started |
+| 14  | Shopping Cart              | Multiple classes, lists of objects, object interaction    | ✅ Completed   |
 | 15  | Library Management System  | Multiple classes, object state, object interaction        | ⬜ Not Started |
 | 16  | Employee Count             | Class variables, `@classmethod`                           | ⬜ Not Started |
 | 17  | Email Validation           | `@staticmethod`, validation                               | ⬜ Not Started |
@@ -1031,42 +1031,119 @@ Final Balance: PKR 20500
 
 ---
 
-## 14. Shopping Cart
+## 14. Shopping Cart ✅
 
-Create:
+### Problem
+
+Create a `Product` class containing `name`, `price`, and `quantity`. Create a `ShoppingCart` class with methods to add and remove products, calculate the total price, and display the cart. When a product with a matching name is added, combine its quantity with the existing product.
+
+### Concepts Practiced
+
+- Multiple classes and object interaction
+- Composition: a shopping cart stores `Product` objects
+- Instance attributes and instance methods
+- Lists of objects
+- Searching and removing objects from a list
+- Case-insensitive string comparison with `.lower()`
+- Generator expressions and `sum()` for aggregation
+- Type annotations
+- Handling empty carts and missing products
+- Formatting output with f-strings
+- `if __name__ == "__main__":`
+
+### Solution
 
 ```python
-Product
-ShoppingCart
+class Product:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def total_price(self):
+        return self.price * self.quantity
+
+
+class ShoppingCart:
+    def __init__(self):
+        self.products = []
+
+    def add_product(self, product):
+        for p in self.products:
+            if p.name.lower() == product.name.lower():
+                p.quantity += product.quantity
+                return
+        self.products.append(product)
+
+    def remove_product(self, product_name: str):
+        for p in self.products:
+            if p.name.lower() == product_name.lower():
+                self.products.remove(p)
+                print(f"🛒 Removed {product_name} from the cart.")
+                return
+        print(f"❌ {product_name} not found in the cart.")
+
+    def calculate_total(self) -> float:
+        return sum(product.total_price() for product in self.products)
+
+    def display_cart(self):
+        if not self.products:
+            print("🛒 Your shopping cart is empty.")
+            return
+
+        print("\n--- Shopping Cart ---")
+        for p in self.products:
+            print(f"{p.name} × {p.quantity} = {p.total_price():.0f}")
+        print(f"Total = {self.calculate_total():.0f}")
+        print("---------------------\n")
+
+
+# --- Example Usage ---
+if __name__ == "__main__":
+    cart = ShoppingCart()
+
+    prod1 = Product("Laptop", 100000, 1)
+    prod2 = Product("Mouse", 1500, 2)
+
+    cart.add_product(prod1)
+    cart.add_product(prod2)
+
+    cart.display_cart()
+
+    cart.remove_product("Mouse")
+    cart.display_cart()
 ```
 
-### Product
-
-Contains:
-
-- `name`
-- `price`
-- `quantity`
-
-### ShoppingCart
-
-Create:
-
-- `add_product()`
-- `remove_product()`
-- `calculate_total()`
-- `display_cart()`
-
-Example:
+### Output
 
 ```text
+--- Shopping Cart ---
 Laptop × 1 = 100000
 Mouse × 2 = 3000
-
 Total = 103000
+---------------------
+
+🛒 Removed Mouse from the cart.
+
+--- Shopping Cart ---
+Laptop × 1 = 100000
+Total = 100000
+---------------------
 ```
 
-**Status:** ⬜ Not Started
+### What I Learned
+
+- A `ShoppingCart` can store and manage multiple `Product` objects in a list.
+- `total_price()` calculates the cost of one product using `price * quantity`.
+- `add_product()` checks whether a product with the same name already exists and combines quantities when it does.
+- Using `.lower()` makes product-name matching case-insensitive.
+- `remove_product()` searches for a product by name and removes it from the cart.
+- `sum()` and a generator expression make it straightforward to calculate the cart's total.
+- Empty-cart and product-not-found checks help handle common edge cases.
+- f-string formatting with `:.0f` displays the example prices without decimal places.
+- `if __name__ == "__main__":` keeps the example usage from running when the file is imported.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -1406,10 +1483,10 @@ Real-world OOP System
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
 | 🟢 Easy         |        10 |     10 |
-| 🟡 Intermediate |         3 |     10 |
-| **Overall**     |    **13** | **20** |
+| 🟡 Intermediate |         4 |     10 |
+| **Overall**     |    **14** | **20** |
 
-**Overall Progress: 65%**
+**Overall Progress: 70%**
 
 ---
 
