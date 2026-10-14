@@ -34,7 +34,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | 12  | Animal Polymorphism        | Inheritance, polymorphism, method overriding              | ✅ Completed   |
 | 13  | Private Bank Account       | Encapsulation, private attributes                         | ✅ Completed   |
 | 14  | Shopping Cart              | Multiple classes, lists of objects, object interaction    | ✅ Completed   |
-| 15  | Library Management System  | Multiple classes, object state, object interaction        | ⬜ Not Started |
+| 15  | Library Management System  | Multiple classes, object state, object interaction        | ✅ Completed   |
 | 16  | Employee Count             | Class variables, `@classmethod`                           | ⬜ Not Started |
 | 17  | Email Validation           | `@staticmethod`, validation                               | ⬜ Not Started |
 | 18  | Vector                     | Operator overloading, `__add__()`, `__str__()`            | ⬜ Not Started |
@@ -1147,37 +1147,204 @@ Total = 100000
 
 ---
 
-## 15. Library Management System
+## 15. Library Management System ✅
 
-Create:
+### Problem
+
+Create a `Book` class with `title`, `author`, `isbn`, and `available` attributes. Create a `Library` class that stores book objects and provides methods to add, remove, borrow, return, and display books. A user should not be able to borrow a book that is already borrowed.
+
+### Concepts Practiced
+
+- Creating and interacting with multiple classes
+- Object composition: a `Library` stores `Book` objects in a list
+- Instance attributes and object state
+- Searching a list of objects by ISBN
+- Adding and removing objects from a list
+- Conditional logic and Boolean values
+- Updating an object's availability state
+- Using `return` to exit a method once a matching book is handled
+- Handling missing books and other common scenarios
+- `if __name__ == "__main__":`
+
+### Solution
 
 ```python
-Book
-Library
+class Book:
+    def __init__(self, title, author, isbn):
+        self.title = title
+        self.author = author
+        self.isbn = isbn
+        self.available = True
+
+class Library:
+    def __init__(self):
+        self.books = []
+
+    def add_book(self, book):
+        self.books.append(book)
+
+    def remove_book(self, isbn):
+        for b in self.books:
+            if b.isbn == isbn:
+                self.books.remove(b)
+                print(f"Successfully removed '{b.title}' from the library.")
+                return
+
+        print(f"Cannot remove book: ISBN {isbn} does not exist.")
+
+    def display_books(self):
+        if not self.books:
+            print('Library Is Empty')
+            return
+
+        print("\n--- Library Books ---")
+        for b in self.books:
+            print(f'Title: {b.title}')
+            print(f'Author: {b.author}')
+            print(f'ISBN: {b.isbn}')
+            print(f'Available: {b.available}')
+            print("---------------------\n")
+
+    def borrow_book(self, isbn):
+        for b in self.books:
+            if b.isbn == isbn:
+                if b.available:
+                    b.available = False
+                    print(f"Successfully borrowed '{b.title}'!")
+                else:
+                    print(f"Sorry, '{b.title}' is already borrowed.")
+                return
+
+        print(f"Book with ISBN {isbn} does not exist in the library.")
+
+    def return_book(self, isbn):
+        for b in self.books:
+            if b.isbn == isbn:
+                if not b.available:
+                    b.available = True
+                    print(f"Successfully returned '{b.title}'!")
+                else:
+                    print(f"'{b.title}' is already available in the library.")
+                return
+
+        print(f"Book with ISBN {isbn} does not exist.")
+
+if __name__ == '__main__':
+    book1 = Book("Harry Potter", "J.K. Rowling", "12345")
+    book2 = Book("The Hobbit", "J.R.R. Tolkien", "67890")
+    book3 = Book("To Kill a Mockingbird", "Harper Lee", "11223")
+    book4 = Book("1984", "George Orwell", "44556")
+    book5 = Book("The Great Gatsby", "F. Scott Fitzgerald", "77889")
+    book6 = Book("Pride and Prejudice", "Jane Austen", "99001")
+
+    library = Library()
+    library.add_book(book1)
+    library.add_book(book2)
+    library.add_book(book3)
+    library.add_book(book4)
+    library.add_book(book5)
+    library.add_book(book6)
+
+    library.display_books()
+
+    library.borrow_book("12345")
+    library.borrow_book("11223")
+    library.return_book("12345")
+
+    library.remove_book("67890")
+    library.display_books()
 ```
 
-### Book
+### Output
 
-Contains:
+```text
+--- Library Books ---
+Title: Harry Potter
+Author: J.K. Rowling
+ISBN: 12345
+Available: True
+---------------------
 
-- `title`
-- `author`
-- `isbn`
-- `available`
+Title: The Hobbit
+Author: J.R.R. Tolkien
+ISBN: 67890
+Available: True
+---------------------
 
-### Library
+Title: To Kill a Mockingbird
+Author: Harper Lee
+ISBN: 11223
+Available: True
+---------------------
 
-Create:
+Title: 1984
+Author: George Orwell
+ISBN: 44556
+Available: True
+---------------------
 
-- `add_book()`
-- `remove_book()`
-- `borrow_book()`
-- `return_book()`
-- `display_books()`
+Title: The Great Gatsby
+Author: F. Scott Fitzgerald
+ISBN: 77889
+Available: True
+---------------------
 
-A user should not be able to borrow a book that is already borrowed.
+Title: Pride and Prejudice
+Author: Jane Austen
+ISBN: 99001
+Available: True
+---------------------
 
-**Status:** ⬜ Not Started
+Successfully borrowed 'Harry Potter'!
+Successfully borrowed 'To Kill a Mockingbird'!
+Successfully returned 'Harry Potter'!
+Successfully removed 'The Hobbit' from the library.
+
+--- Library Books ---
+Title: Harry Potter
+Author: J.K. Rowling
+ISBN: 12345
+Available: True
+---------------------
+
+Title: To Kill a Mockingbird
+Author: Harper Lee
+ISBN: 11223
+Available: False
+---------------------
+
+Title: 1984
+Author: George Orwell
+ISBN: 44556
+Available: True
+---------------------
+
+Title: The Great Gatsby
+Author: F. Scott Fitzgerald
+ISBN: 77889
+Available: True
+---------------------
+
+Title: Pride and Prejudice
+Author: Jane Austen
+ISBN: 99001
+Available: True
+---------------------
+```
+
+### What I Learned
+
+- A `Library` object can manage multiple `Book` objects through a list.
+- `add_book()` adds a book object to the library.
+- `remove_book()` searches by ISBN and removes the matching book.
+- `borrow_book()` changes `available` to `False` and prevents borrowing the same book again while it is checked out.
+- `return_book()` changes `available` back to `True` and handles a book that is already available.
+- Searching inside a loop and placing the not-found message after the loop ensures that the message appears only when no matching ISBN is found.
+- `return` stops the method after the matching book has been handled.
+- `display_books()` shows each book's details and availability, and handles an empty library.
+- Object state changes persist because the library list stores references to the actual book objects.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -1483,10 +1650,10 @@ Real-world OOP System
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
 | 🟢 Easy         |        10 |     10 |
-| 🟡 Intermediate |         4 |     10 |
-| **Overall**     |    **14** | **20** |
+| 🟡 Intermediate |         5 |     10 |
+| **Overall**     |    **15** | **20** |
 
-**Overall Progress: 70%**
+**Overall Progress: 75%**
 
 ---
 
@@ -1510,7 +1677,7 @@ Real-world OOP System
 ├── 12-animal-polymorphism.py
 ├── 13-private-bank-account.py
 ├── 14-shopping-cart.py
-├── 15-library-management.py
+├── 15-library-management-system.py
 ├── 16-employee-count.py
 ├── 17-email-validation.py
 ├── 18-vector.py

@@ -29,8 +29,7 @@ class ShoppingCart:
     def __init__(self):
         self.products = []
         
-    def add_product(self, product):
-        
+    def add_product(self, product):        
         for p in self.products:
             if p.name.lower() == product.name.lower():
                 p.quantity += product.quantity
