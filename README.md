@@ -35,8 +35,8 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | 13  | Private Bank Account       | Encapsulation, private attributes                         | ✅ Completed   |
 | 14  | Shopping Cart              | Multiple classes, lists of objects, object interaction    | ✅ Completed   |
 | 15  | Library Management System  | Multiple classes, object state, object interaction        | ✅ Completed   |
-| 16  | Employee Count             | Class variables, `@classmethod`                           | ⬜ Not Started |
-| 17  | Email Validation           | `@staticmethod`, validation                               | ⬜ Not Started |
+| 16  | Employee Count             | Class variables, `@classmethod`                           | ✅ Completed   |
+| 17  | Email Validation           | `@staticmethod`, validation                               | ✅ Completed   |
 | 18  | Vector                     | Operator overloading, `__add__()`, `__str__()`            | ⬜ Not Started |
 | 19  | E-Commerce Product System  | Inheritance, overriding, polymorphism                     | ⬜ Not Started |
 | 20  | Employee Management System | OOP integration, inheritance, encapsulation, polymorphism | ⬜ Not Started |
@@ -1382,7 +1382,51 @@ that returns the number of employees.
 
 **Concepts:** class variables and `@classmethod`.
 
-**Status:** ⬜ Not Started
+**Status:** ✅ Completed
+
+### Concepts Practiced
+
+- Class variables shared by all `Employee` instances
+- Updating a class variable when each object is created
+- `@classmethod` and the `cls` parameter
+- Returning a value from a class method
+- Calling a class method through the class
+
+### Solution
+
+```python
+class Employee:
+    employee_count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Employee.employee_count += 1
+
+    @classmethod
+    def get_employee_count(cls):
+        return cls.employee_count
+
+
+if __name__ == '__main__':
+    e1 = Employee("Ali")
+    e2 = Employee("Ahmed")
+    e3 = Employee("Sara")
+
+    print(f"Total employees: {Employee.get_employee_count()}")
+```
+
+### Output
+
+```text
+Total employees: 3
+```
+
+### What I Learned
+
+- `employee_count` is a class variable shared by all instances.
+- `Employee.employee_count += 1` increments the shared count whenever an employee is created.
+- `@classmethod` receives the class as `cls`, allowing the method to access class-level data.
+- `get_employee_count()` returns the current count instead of printing it directly.
 
 ---
 
@@ -1424,7 +1468,58 @@ True
 
 **Concept:** `@staticmethod`.
 
-**Status:** ⬜ Not Started
+**Status:** ✅ Completed
+
+### Concepts Practiced
+
+- Creating a class with instance attributes
+- Defining a static method with `@staticmethod`
+- Using a regular expression with Python's `re` module
+- Returning a Boolean result with `bool()`
+- Testing accepted and rejected email-like strings
+
+### Solution
+
+```python
+import re
+
+class User:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+
+    @staticmethod
+    def is_valid_email(email):
+        pattern = r"^[^@]+@[^@]+\.[^@]+$"
+        return bool(re.match(pattern, email))
+
+
+if __name__ == '__main__':
+    email1 = "ali@gmail.com"
+    email2 = "ali.gmail.com"
+    email3 = "aligmailcom"
+
+    print(User.is_valid_email(email1))
+    print(User.is_valid_email(email2))
+    print(User.is_valid_email(email3))
+    print(User.is_valid_email("ali@."))
+```
+
+### Output
+
+```text
+True
+False
+False
+False
+```
+
+### What I Learned
+
+- A static method can be called on the class without creating a `User` instance.
+- `is_valid_email()` does not need `self` or `cls` because it only uses the supplied email string.
+- The regular expression checks for a basic email-like format, including text around `@` and a dot followed by at least one character.
+- This is a basic format check, not proof that an email address exists or is fully valid.
 
 ---
 
@@ -1650,10 +1745,10 @@ Real-world OOP System
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
 | 🟢 Easy         |        10 |     10 |
-| 🟡 Intermediate |         5 |     10 |
-| **Overall**     |    **15** | **20** |
+| 🟡 Intermediate |         7 |     10 |
+| **Overall**     |    **17** | **20** |
 
-**Overall Progress: 75%**
+**Overall Progress: 85%**
 
 ---
 
