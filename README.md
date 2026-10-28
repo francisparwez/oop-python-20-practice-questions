@@ -37,7 +37,7 @@ The exercises progress from basic classes and instance methods to inheritance, e
 | 15  | Library Management System  | Multiple classes, object state, object interaction        | ✅ Completed   |
 | 16  | Employee Count             | Class variables, `@classmethod`                           | ✅ Completed   |
 | 17  | Email Validation           | `@staticmethod`, validation                               | ✅ Completed   |
-| 18  | Vector                     | Operator overloading, `__add__()`, `__str__()`            | ⬜ Not Started |
+| 18  | Vector                     | Operator overloading, `__add__()`, `__str__()`            | ✅ Completed   |
 | 19  | E-Commerce Product System  | Inheritance, overriding, polymorphism                     | ⬜ Not Started |
 | 20  | Employee Management System | OOP integration, inheritance, encapsulation, polymorphism | ⬜ Not Started |
 
@@ -1523,57 +1523,64 @@ False
 
 ---
 
-## 18. Operator Overloading
+## 18. Operator Overloading ✅
 
-Create a `Vector` class with:
+### Problem
 
-- `x`
-- `y`
+Create a `Vector` class with `x` and `y` attributes. Implement `__add__()` so two vectors can be added with `+`, returning a new `Vector` with the summed coordinates. Implement `__str__()` to display a vector in the format `(x, y)`.
 
-Create:
+### Concepts Practiced
+
+- Operator overloading with `__add__()`
+- Special methods / dunder methods
+- Returning a new object from an operation
+- String representation with `__str__()`
+- Accessing attributes from another object of the same class
+- `if __name__ == "__main__":`
+
+### Solution
 
 ```python
-v1 = Vector(2, 3)
-v2 = Vector(4, 5)
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __str__(self):
+        return f"{self.x, self.y}"
+
+
+if __name__ == '__main__':
+    v1 = Vector(2, 3)
+    v2 = Vector(4, 5)
+
+    v3 = v1 + v2
+
+    print(v1)
+    print(v2)
+    print(v3)
 ```
 
-Allow:
-
-```python
-v3 = v1 + v2
-```
-
-to produce:
+### Output
 
 ```text
-Vector(6, 8)
-```
-
-Implement:
-
-```python
-__add__()
-```
-
-Also implement:
-
-```python
-__str__()
-```
-
-so:
-
-```python
-print(v3)
-```
-
-outputs:
-
-```text
+(2, 3)
+(4, 5)
 (6, 8)
 ```
 
-**Status:** ⬜ Not Started
+### What I Learned
+
+- `__add__()` defines what the `+` operator does for `Vector` objects.
+- `v1 + v2` calls `v1.__add__(v2)` and returns a new `Vector`.
+- The new vector's `x` coordinate is the sum of the two `x` coordinates, and its `y` coordinate is the sum of the two `y` coordinates.
+- `__str__()` provides a readable string representation when a vector is passed to `print()`.
+- The original vectors remain unchanged when a new vector is created from their sum.
+
+**Status:** ✅ Completed
 
 ---
 
@@ -1745,10 +1752,10 @@ Real-world OOP System
 | Level           | Completed |  Total |
 | --------------- | --------: | -----: |
 | 🟢 Easy         |        10 |     10 |
-| 🟡 Intermediate |         7 |     10 |
-| **Overall**     |    **17** | **20** |
+| 🟡 Intermediate |         8 |     10 |
+| **Overall**     |    **18** | **20** |
 
-**Overall Progress: 85%**
+**Overall Progress: 90%**
 
 ---
 
